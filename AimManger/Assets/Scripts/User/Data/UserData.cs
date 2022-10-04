@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class UserData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public float sensitivity { get; private set; }
+	public float fieldOfView { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

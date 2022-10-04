@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class UserAimingResults : MonoBehaviour
 {
-	public float accuracy;
+	public float num_hits { get; private set; }
+	public float num_misses { get; private set; }
+	public float accuracy { get; private set; }
 	
 
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }
