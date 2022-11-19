@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TargetSpawnData : MonoBehaviour
 {
-	public float size { get; private set; }
-	public int health { get; private set; }
-	public float spawnAngle { get; private set; }
-	public float lifeTime { get; private set; }
+	public float size;
+	public int health;
+	public float spawnAngleRange;
+	public float lifeTime;
 	
 
 	public const float MAX_SIZE = 2f;

@@ -61,14 +61,15 @@
     <Compile Include="Assets\Scripts\MyMethods\MyInputMethods.cs" />
     <Compile Include="Assets\Scripts\MyMethods\MyStringMethods.cs" />
     <Compile Include="Assets\Scripts\MyMethods\SortingLayerInMeshRenderer.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraRotation.cs" />
+    <Compile Include="Assets\Scripts\Player\CoordinateRotation.cs" />
+    <Compile Include="Assets\Scripts\Player\Data\AimingResults.cs" />
+    <Compile Include="Assets\Scripts\Player\Data\TargetProperties.cs" />
+    <Compile Include="Assets\Scripts\Player\Data\UserData.cs" />
+    <Compile Include="Assets\Scripts\Player\ObjectRotationWithPlayer.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerFiring.cs" />
     <Compile Include="Assets\Scripts\TargetSpawnData.cs" />
     <Compile Include="Assets\Scripts\TargetSpawner.cs" />
-    <Compile Include="Assets\Scripts\User\CameraRotation.cs" />
-    <Compile Include="Assets\Scripts\User\CoordinateRotation.cs" />
-    <Compile Include="Assets\Scripts\User\Data\AimingResults.cs" />
-    <Compile Include="Assets\Scripts\User\Data\TargetProperties.cs" />
-    <Compile Include="Assets\Scripts\User\Data\UserData.cs" />
-    <Compile Include="Assets\Scripts\User\ObjectRotationWithPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
