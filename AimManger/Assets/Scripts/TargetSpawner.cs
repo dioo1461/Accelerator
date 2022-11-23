@@ -14,6 +14,8 @@ public class TargetSpawner : MonoBehaviour {
 	public float ray_maxDistance = 10000f;
 	public int layerMask;
 
+	const float RADIUS_SPHERE_COORDINATE = 10f;
+
 	Vector3 prevSpawnRotation;
 	RaycastHit hitInfo;
 	Ray ray;
@@ -28,27 +30,39 @@ public class TargetSpawner : MonoBehaviour {
 		
 	}
 
+	float Degree_To_Radian(float degree) => Mathf.PI * degree / 180f;
+	float Radian_To_Degree(float radian) => radian * (180f / Mathf.PI);
+
 	public void Despawn_Target(GameObject target) {
 		Destroy(target);
 	}
 
 	public void Spawn_Target() {
-		Debug.DrawRay(mainCamera.transform.position, Calculate_Raycast_Rotation(mainCamera.transform.forward) * 1000, Color.red, 1f);
-		if (Physics.Raycast(mainCamera.transform.position, Calculate_Raycast_Rotation(mainCamera.transform.forward), out hitInfo, ray_maxDistance, layerMask)) {
+		Vector3 _tempRotation = Calculate_Raycast_Rotation(mainCamera.transform.position, mainCamera.transform.forward);
+		Debug.DrawRay(mainCamera.transform.position, _tempRotation * 1000, Color.red, 1f);
+		if (Physics.Raycast(mainCamera.transform.position, _tempRotation, out hitInfo, ray_maxDistance, layerMask)) {
 			Instantiate(prefab_target, hitInfo.point, Quaternion.identity, hierarchy_targets);
 			Debug.Log("Instantiate");
 		}
 	}
 
-	Vector3 Calculate_Raycast_Rotation(Vector3 originRotation) {
-		Debug.Log(originRotation.x);
-		Debug.Log(originRotation.y);
-		Debug.Log(originRotation.z);
-		float tempX = Random.Range(originRotation.x - targetSpawnData.spawnAngleRange, originRotation.x + targetSpawnData.spawnAngleRange);
-		float tempY = Random.Range(originRotation.y - targetSpawnData.spawnAngleRange, originRotation.y + targetSpawnData.spawnAngleRange);
-		float tempZ = Random.Range(originRotation.z - targetSpawnData.spawnAngleRange, originRotation.z + targetSpawnData.spawnAngleRange);
+	Vector3 Calculate_Raycast_Rotation(Vector3 originPosition, Vector3 originRotation) {
+		RaycastHit _hitInfo;
+		Physics.Raycast(mainCamera.transform.position, originRotation, out _hitInfo, ray_maxDistance, layerMask);
+		
+		// (delta) x^2 + y^2 + z^2 <= radius * tangent theta
+		float _tangentTheta = Mathf.Tan(Degree_To_Radian(targetSpawnData.spawnAngleRange));
+		float _totalCapacity = Mathf.Pow(RADIUS_SPHERE_COORDINATE * _tangentTheta, 2);
+		Debug.Log("Tangent Theta : " + _tangentTheta);
+		Debug.Log("TotalCapacity : " + _totalCapacity);
+		float _deltaX = Random.Range(-_tangentTheta, _tangentTheta);
+		_totalCapacity -= Mathf.Pow(_deltaX, 2);
+		float _deltaY = Random.Range(-Mathf.Sqrt(_totalCapacity), Mathf.Sqrt(_totalCapacity));
+		_totalCapacity -= Mathf.Pow(_deltaY, 2);
+		float _deltaZ = Random.Range(-Mathf.Sqrt(_totalCapacity), Mathf.Sqrt(_totalCapacity));
+		Vector3 _newPosition = new Vector3(_hitInfo.point.x + _deltaX, _hitInfo.point.y + _deltaY, _hitInfo.point.z + _deltaZ);
 
-		return new Vector3(tempX, tempY, tempZ);
+		return _newPosition - originPosition;
 	}
 
 
