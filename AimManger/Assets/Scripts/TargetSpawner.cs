@@ -11,14 +11,12 @@ public class TargetSpawner : MonoBehaviour {
 	public GameObject prefab_target;
 	public GameObject prefab_targetSpawnRange;
 
-	public float ray_maxDistance = 10000f;
+	public float ray_maxDistance = 1000000f;
 	public int layerMask;
 
 	const float RADIUS_SPHERE_COORDINATE = 10f;
 
 	Vector3 prevSpawnRotation;
-	RaycastHit hitInfo;
-	Ray ray;
 	//const float SPAWN_Z_POS = 10f;
 
 	void Awake() {
@@ -38,41 +36,40 @@ public class TargetSpawner : MonoBehaviour {
 	}
 
 	public void Spawn_Target() {
+		RaycastHit _hitInfo;
 		Vector3 _tempRotation = Calculate_Raycast_Rotation(mainCamera.transform.position, mainCamera.transform.forward);
-		Debug.DrawRay(mainCamera.transform.position, _tempRotation * 1000, Color.red, 1f);
-		if (Physics.Raycast(mainCamera.transform.position, _tempRotation, out hitInfo, ray_maxDistance, layerMask)) {
-			Instantiate(prefab_target, hitInfo.point, Quaternion.identity, hierarchy_targets);
+		Vector3 _outerPosition = mainCamera.transform.position + 10 * _tempRotation;
+		// 왜 10f은 되고 100f는 안될까? -> 왠진 모르겠는데 100f로 하면 너무 멀어짐
+		Debug.DrawRay(_outerPosition, -(_tempRotation), Color.red, 1f);
+		if (Physics.Raycast(_outerPosition, -(_tempRotation), out _hitInfo, ray_maxDistance, layerMask)) {
+			Instantiate(prefab_target, _hitInfo.point, Quaternion.identity, hierarchy_targets);
 			Debug.Log("Instantiate");
 		}
+		Debug.Log(_hitInfo.point);
 	}
 
 	Vector3 Calculate_Raycast_Rotation(Vector3 originPosition, Vector3 originRotation) {
 		RaycastHit _hitInfo;
-		Physics.Raycast(mainCamera.transform.position, originRotation, out _hitInfo, ray_maxDistance, layerMask);
+		Vector3 _outerPosition = mainCamera.transform.position + 100f * originRotation;
+		Physics.Raycast(_outerPosition, -originRotation, out _hitInfo, ray_maxDistance, layerMask);
 		
-		// (delta) x^2 + y^2 + z^2 <= radius * tangent theta
 		float _tangentTheta = Mathf.Tan(Degree_To_Radian(targetSpawnData.spawnAngleRange));
 		float _totalCapacity = Mathf.Pow(RADIUS_SPHERE_COORDINATE * _tangentTheta, 2);
-		Debug.Log("Tangent Theta : " + _tangentTheta);
-		Debug.Log("TotalCapacity : " + _totalCapacity);
-		float _deltaX = Random.Range(-_tangentTheta, _tangentTheta);
+		float _deltaX = Random.Range(-RADIUS_SPHERE_COORDINATE * _tangentTheta, RADIUS_SPHERE_COORDINATE * _tangentTheta);
 		_totalCapacity -= Mathf.Pow(_deltaX, 2);
 		float _deltaY = Random.Range(-Mathf.Sqrt(_totalCapacity), Mathf.Sqrt(_totalCapacity));
 		_totalCapacity -= Mathf.Pow(_deltaY, 2);
 		float _deltaZ = Random.Range(-Mathf.Sqrt(_totalCapacity), Mathf.Sqrt(_totalCapacity));
-		Vector3 _newPosition = new Vector3(_hitInfo.point.x + _deltaX, _hitInfo.point.y + _deltaY, _hitInfo.point.z + _deltaZ);
 
+		Vector3 _newPosition = new Vector3(_hitInfo.point.x + _deltaX, _hitInfo.point.y + _deltaY, _hitInfo.point.z + _deltaZ);
+		Debug.Log("rot : " + (_newPosition - originPosition));
 		return _newPosition - originPosition;
 	}
-
-
-
 
 
 	/*void Spawn_TargetSpawnRange() {
 		Instantiate(prefab_targetSpawnRange, playerTransform.localPosition, playerTransform.rotation, hierarchy_targets);
 	}
-
 
 	void temp() {
 		GameObject targetSpawnRange = Instantiate(prefab_targetSpawnRange, playerTransform.localPosition, playerTransform.rotation, hierarchy_targets);
