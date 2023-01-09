@@ -56,18 +56,24 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Debug\DebugAccuracy.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugGetAxis.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\ModifyTargetProps.cs" />
     <Compile Include="Assets\Scripts\MyMethods\MyInputMethods.cs" />
     <Compile Include="Assets\Scripts\MyMethods\MyStringMethods.cs" />
     <Compile Include="Assets\Scripts\MyMethods\SortingLayerInMeshRenderer.cs" />
     <Compile Include="Assets\Scripts\Player\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\Player\CoordinateRotation.cs" />
     <Compile Include="Assets\Scripts\Player\Data\AimingResults.cs" />
-    <Compile Include="Assets\Scripts\Player\Data\TargetProperties.cs" />
     <Compile Include="Assets\Scripts\Player\Data\UserData.cs" />
     <Compile Include="Assets\Scripts\Player\ObjectRotationWithPlayer.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerFiring.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
+    <Compile Include="Assets\Scripts\Settings\DisplaySettings.cs" />
+    <Compile Include="Assets\Scripts\Settings\KeyBinding.cs" />
+    <Compile Include="Assets\Scripts\Settings\MouseSettings.cs" />
+    <Compile Include="Assets\Scripts\Settings\SettingsWindow.cs" />
+    <Compile Include="Assets\Scripts\TargetProps.cs" />
     <Compile Include="Assets\Scripts\TargetSpawnData.cs" />
     <Compile Include="Assets\Scripts\TargetSpawner.cs" />
   </ItemGroup>

@@ -7,8 +7,8 @@ public class ObjectRotationWithPlayer : MonoBehaviour
 	public UserData userData;
 	public Transform playerTransform;
 
-	public float sensitivity = 4f; // 마우스 회전 속도
-	public float moveSpeed = 1.0f; // 이동 속도
+	public float sensitivity; // 마우스 회전 속도
+	public float moveSpeed; // 이동 속도
 	 // 내부 사용할 X축 회전량은 별도 정의 ( 카메라 위 아래 방향 )
 
 	public const float YAW_PITCH_VALUE = 0.0066f;
