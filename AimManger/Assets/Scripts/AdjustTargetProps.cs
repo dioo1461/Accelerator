@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModifyTargetProps : MonoBehaviour
+public class AdjustTargetProps : MonoBehaviour
 {
 	[SerializeField] AimingResults aimingResults;
 	[SerializeField] TargetSpawnData targetSpawnData;
@@ -13,14 +13,6 @@ public class ModifyTargetProps : MonoBehaviour
 	int _cnt_targetLifetime = 0;
 	int _cnt_targetSpawnAngle = 0;
 
-	const float SIZE_MODIFICATION_RATIO = 1.05f;
-	const int SIZE_MODIFICATION_TRIGGER_COUNT = 3;
-
-	const float LIFETIME_MODIFICATION_AMOUNT = 0.01f;
-	const int LIFETIME_MODIFICATION_TRIGGER_COUNT = 5;
-
-	const float SPAWNANGLE_MODIFICATION_AMOUNT = 1f;
-	const int SPAWNANGLE_MODIFICATION_TRIGGER_COUNT = 3;
 
 	public void Extend_Target_Size() {
 		if (_cnt_targetSize >= 0) {
@@ -31,9 +23,9 @@ public class ModifyTargetProps : MonoBehaviour
 			_cnt_targetSize++;
 		}
 		
-		if (_cnt_targetSize == SIZE_MODIFICATION_TRIGGER_COUNT) {
+		if (_cnt_targetSize == TargetSpawnData.SIZE_ADJUST_TRIGGER_COUNT) {
 			// Size Up Target
-			targetSpawnData.size *= SIZE_MODIFICATION_RATIO;
+			targetSpawnData.size *= TargetSpawnData.SIZE_ADJUST_RATIO_PER_TIC;
 			_cnt_targetSize = 0;
 			return;
 		}
@@ -48,9 +40,9 @@ public class ModifyTargetProps : MonoBehaviour
 			_cnt_targetSize--;
 		}
 
-		if (_cnt_targetSize == -(SIZE_MODIFICATION_TRIGGER_COUNT)) {
+		if (_cnt_targetSize == -(TargetSpawnData.SIZE_ADJUST_TRIGGER_COUNT)) {
 			// Size Down Target
-			targetSpawnData.size /= SIZE_MODIFICATION_RATIO;
+			targetSpawnData.size /= TargetSpawnData.SIZE_ADJUST_RATIO_PER_TIC;
 			_cnt_targetSize = 0;
 			return;
 		}
@@ -64,9 +56,9 @@ public class ModifyTargetProps : MonoBehaviour
 			_cnt_targetLifetime++;
 		}
 
-		if (_cnt_targetLifetime == LIFETIME_MODIFICATION_TRIGGER_COUNT) {
+		if (_cnt_targetLifetime == TargetSpawnData.LIFETIME_ADJUST_TRIGGER_COUNT) {
 			// Increase target Lifetime
-			targetSpawnData.lifeTime += LIFETIME_MODIFICATION_AMOUNT;
+			targetSpawnData.lifeTime += TargetSpawnData.LIFETIME_ADJUST_AMOUNT_PER_TIC;
 			_cnt_targetLifetime = 0;
 			return;
 		}
@@ -81,9 +73,9 @@ public class ModifyTargetProps : MonoBehaviour
 			_cnt_targetLifetime--;
 		}
 
-		if (_cnt_targetLifetime == -(LIFETIME_MODIFICATION_TRIGGER_COUNT)) {
+		if (_cnt_targetLifetime == -(TargetSpawnData.LIFETIME_ADJUST_TRIGGER_COUNT)) {
 			// Decrease target Lifetime
-			targetSpawnData.lifeTime -= LIFETIME_MODIFICATION_AMOUNT;
+			targetSpawnData.lifeTime -= TargetSpawnData.LIFETIME_ADJUST_AMOUNT_PER_TIC;
 			_cnt_targetLifetime = 0;
 			return;
 		}
@@ -98,9 +90,9 @@ public class ModifyTargetProps : MonoBehaviour
 			_cnt_targetSpawnAngle++;
 		}
 
-		if (_cnt_targetSpawnAngle == SPAWNANGLE_MODIFICATION_TRIGGER_COUNT) {
+		if (_cnt_targetSpawnAngle == TargetSpawnData.SPAWN_ANGLE_ADJUST_TRIGGER_COUNT) {
 			// Increase target SpawnAngle
-			targetSpawnData.spawnAngle += SPAWNANGLE_MODIFICATION_AMOUNT;
+			targetSpawnData.spawnAngle += TargetSpawnData.SPAWN_ANGLE_ADJUST_AMOUNT_PER_TIC;
 			_cnt_targetSpawnAngle = 0;
 			return;
 		}
@@ -115,9 +107,9 @@ public class ModifyTargetProps : MonoBehaviour
 			_cnt_targetSpawnAngle--;
 		}
 
-		if (_cnt_targetSpawnAngle == -(SPAWNANGLE_MODIFICATION_TRIGGER_COUNT)) {
+		if (_cnt_targetSpawnAngle == -(TargetSpawnData.SPAWN_ANGLE_ADJUST_TRIGGER_COUNT)) {
 			// Decrease target SpawnAngle
-			targetSpawnData.spawnAngle -= SPAWNANGLE_MODIFICATION_AMOUNT;
+			targetSpawnData.spawnAngle -= TargetSpawnData.SPAWN_ANGLE_ADJUST_AMOUNT_PER_TIC;
 			_cnt_targetSpawnAngle = 0;
 			return;
 		}

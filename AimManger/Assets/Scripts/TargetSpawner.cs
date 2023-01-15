@@ -19,22 +19,9 @@ public class TargetSpawner : MonoBehaviour {
 
 	Vector3 prevSpawnRotation;
 	//const float SPAWN_Z_POS = 10f;
-
+	
 	void Awake() {
 		layerMask = 1 << LayerMask.NameToLayer("Coordinate");
-		Spawn_Target();
-		//StartCoroutine(Spawn_Via_LifeTime_Coroutine());
-	}
-	
-	IEnumerator Spawn_Via_LifeTime_Coroutine() {
-		float _timer = targetSpawnData.lifeTime;
-
-		while (_timer >= 0) {
-			_timer -= Time.deltaTime;
-			yield return null;
-		}
-		Spawn_Target();
-		aimingResults.HitOrMiss(false);
 	}
 
 	float Degree_To_Radian(float degree) => Mathf.PI * degree / 180f;
@@ -44,7 +31,11 @@ public class TargetSpawner : MonoBehaviour {
 		Destroy(target);
 	}
 
-	public void Spawn_Target() {
+	/// <summary>
+	/// 타깃을 구형좌표계 위에 생성<br/>
+	/// </summary>
+	/// <returns>생성된 타깃 객체 (GameObject)</returns>
+	public GameObject Spawn_Target() {
 		RaycastHit _hitInfo;
 		Vector3 _tempRotation = Calculate_Raycast_Rotation(mainCamera.transform.position, mainCamera.transform.forward);
 		Vector3 _outerPosition = mainCamera.transform.position + 5 * _tempRotation;
@@ -55,18 +46,21 @@ public class TargetSpawner : MonoBehaviour {
 		//Debug.DrawRay(_outerPosition, -(_tempRotation)*1000f, Color.red, 1f);
 		if (Physics.Raycast(_outerPosition, -(_tempRotation), out _hitInfo, ray_maxDistance, layerMask)) {
 			GameObject _target = Instantiate(prefab_target, _hitInfo.point, Quaternion.identity, hierarchy_targets);
-			_target.GetComponent<TargetProps>().Init_Props(targetSpawnData.size, targetSpawnData.lifeTime);
-			//Debug.Log("Instantiate");
+			_target.GetComponent<TargetProps>().Init_Props(targetSpawnData.Get_Target_Size(), targetSpawnData.Get_Target_LifeTime());
+			return _target;
 		}
-		/*Debug.Log("outerPosition : " + _outerPosition);
-		Debug.Log("hitPoint : " + _hitInfo.point);*/
+		return null;
 	}
 
+	/// <summary>
+	/// 구형좌표계에 Ray를 쏴서 교차되는 지점을 Vector3로 반환
+	/// </summary>
+	/// <returns></returns>
 	Vector3 Calculate_Raycast_Rotation(Vector3 originPosition, Vector3 originRotation) {
 		RaycastHit _hitInfo;
 		Vector3 _outerPosition = mainCamera.transform.position + 100f * originRotation;
 		Physics.Raycast(_outerPosition, -originRotation, out _hitInfo, ray_maxDistance, layerMask);
-		float _tangentTheta = Mathf.Tan(Degree_To_Radian(Mathf.Clamp(targetSpawnData.spawnAngle, TargetSpawnData.MIN_SPAWN_ANGLE, TargetSpawnData.MAX_SPAWN_ANGLE)));
+		float _tangentTheta = Mathf.Tan(Degree_To_Radian(targetSpawnData.Get_Target_SpawnAngle()));
 		float _totalCapacity = Mathf.Pow(RADIUS_SPHERE_COORDINATE * _tangentTheta, 2);
 		float _deltaX = Random.Range(-RADIUS_SPHERE_COORDINATE * _tangentTheta, RADIUS_SPHERE_COORDINATE * _tangentTheta);
 		_totalCapacity -= Mathf.Pow(_deltaX, 2);

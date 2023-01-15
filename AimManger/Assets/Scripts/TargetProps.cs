@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class TargetProps : MonoBehaviour
 {
-	float _lifeTime;
-	int _health;
-
-	
-	IEnumerator Destroy_Via_Lifetime_Coroutine() {
-		float _timer = _lifeTime;
-		while (_timer >= 0) {
-			_timer -= Time.deltaTime;
-			yield return null;
-		}
-		Destroy(gameObject);
-	}
+	public float _lifeTime;
+	public int _health;
 
 	public void Init_Props(float size, float lifeTime, int health = 1) {
 		Apply_Scale(size);
