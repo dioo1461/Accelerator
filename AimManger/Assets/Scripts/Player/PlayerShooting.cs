@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour {
 	[SerializeField] TargetSpawner targetSpawner;
 	[SerializeField] TargetSpawnData targetSpawnData;
+	[SerializeField] TargetsManager targetsManager;
 	[SerializeField] AimingResults aimingResults;
 
 	[SerializeField] GameObject prefab_target;

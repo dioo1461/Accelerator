@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class AimingResults : MonoBehaviour
 {
-	[SerializeField] TargetSpawner targetSpawner;
-	[SerializeField] TargetSpawnData targetSpawnData;
-	[SerializeField] AdjustTargetProps adjustTargetProps;
+	[SerializeField] AdjustTargetSpawnData adjustTargetSpawnData;
 
 	[SerializeField] GameObject prefab_target;
 
@@ -32,13 +30,13 @@ public class AimingResults : MonoBehaviour
 		accuracy = num_hits / num_total * 100f;
 
 		if (accuracy > STANDARD_ACCURACY) {
-			adjustTargetProps.Reduce_Target_Size();
-			adjustTargetProps.Reduce_Target_Lifetime();
-			adjustTargetProps.Extend_Target_Spawn_Angle();
+			adjustTargetSpawnData.Reduce_Target_Size();
+			adjustTargetSpawnData.Reduce_Target_Lifetime();
+			adjustTargetSpawnData.Extend_Target_Spawn_Angle();
 		} else {
-			adjustTargetProps.Extend_Target_Size();
-			adjustTargetProps.Extend_Target_Lifetime();
-			adjustTargetProps.Reduce_Target_Spawn_Angle();
+			adjustTargetSpawnData.Extend_Target_Size();
+			adjustTargetSpawnData.Extend_Target_Lifetime();
+			adjustTargetSpawnData.Reduce_Target_Spawn_Angle();
 		}
 	}
 	

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 705507994}
+  m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -785,6 +785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSpawner: {fileID: 1222010445}
   targetSpawnData: {fileID: 1222010444}
+  targetsManager: {fileID: 1222010449}
   aimingResults: {fileID: 1222010447}
   prefab_target: {fileID: 2763242977236774220, guid: 58950ccef9a0cf54e8f09f43d8b0eb07,
     type: 3}
@@ -1705,6 +1706,7 @@ GameObject:
   - component: {fileID: 1222010444}
   - component: {fileID: 1222010447}
   - component: {fileID: 1222010448}
+  - component: {fileID: 1222010449}
   m_Layer: 0
   m_Name: Targets
   m_TagString: Untagged
@@ -1741,7 +1743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSpawnData: {fileID: 1222010444}
-  aimingResults: {fileID: 1222010447}
+  targetsManager: {fileID: 1222010449}
   hierarchy_targets: {fileID: 1222010446}
   mainCamera: {fileID: 963194227}
   playerObj: {fileID: 519263875}
@@ -1775,9 +1777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c702cae4485590f4f8ff29e165f32575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSpawner: {fileID: 1222010445}
-  targetSpawnData: {fileID: 1222010444}
-  adjustTargetProps: {fileID: 1222010448}
+  adjustTargetSpawnData: {fileID: 1222010448}
   prefab_target: {fileID: 2763242977236774220, guid: 58950ccef9a0cf54e8f09f43d8b0eb07,
     type: 3}
   is_hit: 0
@@ -1796,10 +1796,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a441a080b9564f84360551799b853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimingResults: {fileID: 1222010447}
   targetSpawnData: {fileID: 1222010444}
   prefab_Target: {fileID: 2763242977236774220, guid: 58950ccef9a0cf54e8f09f43d8b0eb07,
     type: 3}
+--- !u!114 &1222010449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222010443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7f22d58e8aac5419bac0eb11c22339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSpawnData: {fileID: 1222010444}
+  targets_arr: []
 --- !u!1 &1949281803
 GameObject:
   m_ObjectHideFlags: 0

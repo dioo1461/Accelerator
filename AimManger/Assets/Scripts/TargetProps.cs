@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class TargetProps : MonoBehaviour
 {
-	public float _lifeTime;
-	public int _health;
+	public int id;
+	public float size;
+	public float lifeTime;
+	public float health;
 
-	public void Init_Props(float size, float lifeTime, int health = 1) {
+	public void Init_Props(int id, float size, float lifeTime, int health = 1) {
 		Apply_Scale(size);
-		_lifeTime = Mathf.Clamp(lifeTime, TargetSpawnData.MIN_LIFETIME, TargetSpawnData.MAX_SPAWN_ANGLE);
-		_health = health;
+		this.id = id;
+		this.size = size;
+		this.lifeTime = Mathf.Clamp(lifeTime, TargetSpawnData.MIN_LIFETIME, TargetSpawnData.MAX_SPAWN_ANGLE);
+		this.health = health;
 		//StartCoroutine(Destroy_Via_Lifetime_Coroutine());
 	}
+
 
 	void Apply_Scale(float scale) {
 		if (scale > TargetSpawnData.MAX_SIZE) {
@@ -25,5 +30,6 @@ public class TargetProps : MonoBehaviour
 		}
 		gameObject.transform.localScale *= scale;
 	}
+
 	
 }

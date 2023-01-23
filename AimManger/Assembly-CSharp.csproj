@@ -56,7 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AdjustTargetProps.cs" />
+    <Compile Include="Assets\Scripts\AdjustTargetSpawnData.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugAccuracy.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugGetAxis.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -77,9 +77,12 @@
     <Compile Include="Assets\Scripts\TargetProps.cs" />
     <Compile Include="Assets\Scripts\TargetSpawnData.cs" />
     <Compile Include="Assets\Scripts\TargetSpawner.cs" />
+    <Compile Include="Assets\Scripts\TargetsManager.cs" />
     <Compile Include="Assets\Scripts\Weapons\RailGun.cs" />
     <Compile Include="Assets\Scripts\Weapons\Revolver.cs" />
     <Compile Include="Assets\Scripts\Weapons\Rifle.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapons.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WeaponsData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour {
 	[SerializeField] TargetSpawnData targetSpawnData;
-	[SerializeField] AimingResults aimingResults;
+	[SerializeField] TargetsManager targetsManager;
 
 	[SerializeField] Transform hierarchy_targets;
 	[SerializeField] Camera mainCamera;
@@ -25,9 +25,9 @@ public class TargetSpawner : MonoBehaviour {
 	}
 
 	float Degree_To_Radian(float degree) => Mathf.PI * degree / 180f;
-	float Radian_To_Degree(float radian) => radian * (180f / Mathf.PI);
 
 	public void Despawn_Target(GameObject target) {
+		targetsManager.Remove_Target(target);
 		Destroy(target);
 	}
 
@@ -46,7 +46,7 @@ public class TargetSpawner : MonoBehaviour {
 		//Debug.DrawRay(_outerPosition, -(_tempRotation)*1000f, Color.red, 1f);
 		if (Physics.Raycast(_outerPosition, -(_tempRotation), out _hitInfo, ray_maxDistance, layerMask)) {
 			GameObject _target = Instantiate(prefab_target, _hitInfo.point, Quaternion.identity, hierarchy_targets);
-			_target.GetComponent<TargetProps>().Init_Props(targetSpawnData.Get_Target_Size(), targetSpawnData.Get_Target_LifeTime());
+			targetsManager.Add_Target(_target);
 			return _target;
 		}
 		return null;
