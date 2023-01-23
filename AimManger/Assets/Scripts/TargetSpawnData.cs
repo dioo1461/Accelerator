@@ -36,8 +36,8 @@ public class TargetSpawnData : MonoBehaviour
 	public const float SIZE_ADJUST_RATIO_PER_TIC = 1.05f;
 	public const int SIZE_ADJUST_TRIGGER_COUNT = 3;
 
-	public const float MAX_LIFETIME = 1.50f;
-	public const float MIN_LIFETIME = 0.50f;
+	public const float MAX_LIFETIME = 100f;
+	public const float MIN_LIFETIME = 0f;
 	public const float LIFETIME_STANDARD_ACCURACY = 50f;
 	public const float LIFETIME_ADJUST_AMOUNT_PER_TIC = 0.1f;
 	public const int LIFETIME_ADJUST_TRIGGER_COUNT = 3;

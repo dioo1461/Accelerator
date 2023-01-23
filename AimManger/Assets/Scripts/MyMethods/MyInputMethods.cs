@@ -72,7 +72,7 @@ public class MyInputMethods : MonoBehaviour
 	/// <summary> Update함수 또는 코루틴에서 사용.<br/>해당 함수 호출 시점에 key가 눌려 있는지 검사하여
 	/// timeGap의 주기마다 true를 반환.<br/>
 	/// </summary>
-	public bool Periodical_Check_If_Key_Pressed(KeyCode key, float timeGap, float time_foreDelay = 0f) {
+	public bool Periodical_Check_KeyPress(KeyCode key, float timeGap, float time_foreDelay = 0f) {
 		if (Input.GetKey(key)) {
 			if (!_is__check_getKeyUp_coroutine__running[(int)key]) {
 				StartCoroutine(Check_GetKeyUp_Coroutine(key, timeGap));
@@ -208,6 +208,7 @@ public class MyInputMethods : MonoBehaviour
 		}
 		return false;
 	}
+	
 	/// <summary> 지정한 매개변수 이외의 입력이 들어오면 true 반환
 	/// </summary>
 	public bool GetKeyDown_Exception(KeyCode key_1, KeyCode key_2 = 0, KeyCode key_3 = 0, KeyCode key_4 = 0, KeyCode key_5 = 0, KeyCode key_6 = 0, KeyCode key_7 = 0, KeyCode key_8 = 0, KeyCode key_9 = 0, KeyCode key_10 = 0) {
@@ -334,6 +335,7 @@ public class MyInputMethods : MonoBehaviour
 		}
 		return false;
 	}
+	
 	/// <summary> 전달한 매개변수 이외의 입력이 들어오면 true 반환
 	/// </summary>
 	public bool GetKeyUp_Exception(KeyCode key_1, KeyCode key_2 = 0, KeyCode key_3 = 0, KeyCode key_4 = 0, KeyCode key_5 = 0, KeyCode key_6 = 0, KeyCode key_7 = 0, KeyCode key_8 = 0, KeyCode key_9 = 0, KeyCode key_10 = 0) {

@@ -14,7 +14,7 @@ public class TargetsManager : MonoBehaviour
 
 	public const int TARGETS_ARR_MAX_CAPACITY = 5000;
 
-	private void Start() {
+	private void Awake() {
 		targets_arr = new TargetProps[TARGETS_ARR_MAX_CAPACITY];
 	}
 
@@ -55,7 +55,7 @@ public class TargetsManager : MonoBehaviour
 		int _empty_idx = Find_Empty_Index();
 		if (_empty_idx != -1) {
 			targets_arr[_empty_idx] = target.GetComponent<TargetProps>();
-			target.GetComponent<TargetProps>().Init_Props(_empty_idx, targetSpawnData.Get_Target_Size(), targetSpawnData.Get_Target_LifeTime());
+			target.GetComponent<TargetProps>().Init_Props(_empty_idx, targetSpawnData.Get_Target_Size(), targetSpawnData.Get_Target_LifeTime(), targetSpawnData.health);
 			_targets_cnt++;
 			return true;
 		} else {
@@ -65,12 +65,16 @@ public class TargetsManager : MonoBehaviour
 		}
 	}
 
-	public void Damage_Target(GameObject target, float damage) {
-		int _id = GetComponent<TargetProps>().id;
+	/// <summary> 타깃에 대미지를 적용. 그 대미지로 타깃이 죽으면 true, 아니면 false 반환.<br/>
+	/// 타깃 객체의 파괴는 TargetSpawner.Despawn_Target()으로 처리할 것
+	/// </summary>
+	public bool Damage_Target(GameObject target, float damage) {
+		int _id = target.GetComponent<TargetProps>().id;
 		targets_arr[_id].health -= damage;
 		if (targets_arr[_id].health <= 0) {
-			Remove_Target(target);
+			return true;
 		}
+		return false;
 	}
 
 	public void Remove_Target(GameObject target) {
