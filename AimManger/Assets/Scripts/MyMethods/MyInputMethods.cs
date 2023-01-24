@@ -12,7 +12,6 @@ public class MyInputMethods : MonoBehaviour
 
 	bool[] _is__keyPress_apply_foreDelay_coroutine__running = new bool[600]; // KeyCode : 0 ~ 509
 	bool[] _is_keyPress_foreDelay_passed = new bool[600];
-	
 
 	void Awake()
     {
@@ -71,6 +70,7 @@ public class MyInputMethods : MonoBehaviour
 
 	/// <summary> Update함수 또는 코루틴에서 사용.<br/>해당 함수 호출 시점에 key가 눌려 있는지 검사하여
 	/// timeGap의 주기마다 true를 반환.<br/>
+	/// timeGap보다 작은 간격으로 클릭을 반복하면 클릭마다 true가 반환됨.
 	/// </summary>
 	public bool Periodical_Check_KeyPress(KeyCode key, float timeGap, float time_foreDelay = 0f) {
 		if (Input.GetKey(key)) {
@@ -82,7 +82,7 @@ public class MyInputMethods : MonoBehaviour
 		return false;
 	}
 
-	/// <summary> 지정한 매개변수 이외의 입력이 들어오면 true 반환
+	/// <summary> 지정한 매개변수 이외의 GetKey 입력이 들어오면 true 반환
 	/// </summary>
 	public bool GetKey_Exception(KeyCode key_1, KeyCode key_2 = 0, KeyCode key_3 = 0, KeyCode key_4 = 0, KeyCode key_5 = 0, KeyCode key_6 = 0, KeyCode key_7 = 0, KeyCode key_8 = 0, KeyCode key_9 = 0, KeyCode key_10 = 0) {
 		int _count = 1;
@@ -209,7 +209,7 @@ public class MyInputMethods : MonoBehaviour
 		return false;
 	}
 	
-	/// <summary> 지정한 매개변수 이외의 입력이 들어오면 true 반환
+	/// <summary> 지정한 매개변수 이외의 GetKeyDown 입력이 들어오면 true 반환
 	/// </summary>
 	public bool GetKeyDown_Exception(KeyCode key_1, KeyCode key_2 = 0, KeyCode key_3 = 0, KeyCode key_4 = 0, KeyCode key_5 = 0, KeyCode key_6 = 0, KeyCode key_7 = 0, KeyCode key_8 = 0, KeyCode key_9 = 0, KeyCode key_10 = 0) {
 		int _count = 1;
@@ -336,7 +336,7 @@ public class MyInputMethods : MonoBehaviour
 		return false;
 	}
 	
-	/// <summary> 전달한 매개변수 이외의 입력이 들어오면 true 반환
+	/// <summary> 지정한 매개변수 이외의 GetKeyUp 입력이 들어오면 true 반환
 	/// </summary>
 	public bool GetKeyUp_Exception(KeyCode key_1, KeyCode key_2 = 0, KeyCode key_3 = 0, KeyCode key_4 = 0, KeyCode key_5 = 0, KeyCode key_6 = 0, KeyCode key_7 = 0, KeyCode key_8 = 0, KeyCode key_9 = 0, KeyCode key_10 = 0) {
 		int _count = 1;

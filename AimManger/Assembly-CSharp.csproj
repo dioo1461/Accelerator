@@ -58,9 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AdjustTargetSpawnData.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugAccuracy.cs" />
+    <Compile Include="Assets\Scripts\Debug\DebugCurrentWeapon.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugDamageDisplayer.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugDamagePrefab.cs" />
+    <Compile Include="Assets\Scripts\Debug\DebugDisplayFPS.cs" />
     <Compile Include="Assets\Scripts\Debug\DebugGetAxis.cs" />
+    <Compile Include="Assets\Scripts\Debug\DebugWeaponCooldown.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MyMethods\MyInputMethods.cs" />
     <Compile Include="Assets\Scripts\MyMethods\MyStringMethods.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Assets\Scripts\Player\ObjectRotationWithPlayer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
+    <Compile Include="Assets\Scripts\Player\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\Settings\DisplaySettings.cs" />
     <Compile Include="Assets\Scripts\Settings\KeyBinding.cs" />
     <Compile Include="Assets\Scripts\Settings\MouseSettings.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Assets\Scripts\Weapons\RailGun.cs" />
     <Compile Include="Assets\Scripts\Weapons\Revolver.cs" />
     <Compile Include="Assets\Scripts\Weapons\Rifle.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Shotgun.cs" />
     <Compile Include="Assets\Scripts\Weapons\Weapons.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponsData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

@@ -20,6 +20,15 @@ public class KeyBinding : MonoBehaviour {
 	public static KeyCode zoom_1;
 	public static KeyCode zoom_2;
 
+	public static KeyCode change_rifle_1;
+	public static KeyCode change_rifle_2;
+	public static KeyCode change_railgun_1;
+	public static KeyCode change_railgun_2;
+	public static KeyCode change_revolver_1;
+	public static KeyCode change_revolver_2;
+	public static KeyCode change_shotgun_1;
+	public static KeyCode change_shotgun_2;
+
 	/*	int _stack_index = 0;
 		bool[] _stack_check_coroutine_running;*/
 
@@ -38,6 +47,13 @@ public class KeyBinding : MonoBehaviour {
 
 		fire_1 = KeyCode.Mouse0;
 		zoom_1 = KeyCode.Mouse1;
+
+		change_rifle_1 = KeyCode.Alpha1;
+		change_railgun_1 = KeyCode.Alpha2;
+		change_revolver_1 = KeyCode.Alpha3;
+		change_shotgun_1 = KeyCode.Alpha4;
+
+
 	}
 
 }
