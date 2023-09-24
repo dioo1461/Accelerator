@@ -27,6 +27,6 @@
 
 target_lifetime, target_size, target_spawn_angle 은 플레이어의 현재 accuracy에 따라 변동됨(난이도 조정).
 
-# Notion 개발 기록 (22년 11월 - 22년 1월)
+# Notion 개발 기록 (22년 11월 - 23년 1월)
 https://www.notion.so/jaesion/Accelerator-5250cad1c4ae4b3c8adfce6cea937aa1?pvs=4
 
