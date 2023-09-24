@@ -24,6 +24,7 @@
 ![angle-explanation](https://github.com/dioo1461/Accelerator/assets/73684109/decb2849-a70a-443a-8649-59189cc06e28)
 
 ▲ 새로 생성되는 타깃은, 이전에 처치된 타깃이 있던 지점(빨간 점)으로부터 Θ값(target_spawn_angle)을 더한 각도 내에 랜덤으로 생성됨. (그림에서 노란색으로 표시된, 반구 표면의 원형 지점 내부에 랜덤 생성)
+
 target_lifetime, target_size, target_spawn_angle 은 플레이어의 현재 accuracy에 따라 변동됨(난이도 조정).
 
 # Notion 개발 기록 (22년 11월 - 22년 1월)
