@@ -21,7 +21,7 @@
 ![target_moving](https://github.com/dioo1461/Accelerator/assets/73684109/9bdd379b-7ca2-4417-b629-b856b640fecc)
 ▲ 타깃에는 일정량의 hp가 있으며, 타깃이 처치되거나 처치되지 않은 채 일정 시간(target_lifetime)이 지나면 일정 크기(target_size)로 새로운 위치에 재생성됨.
 
-![angle-explanation](https://github.com/dioo1461/Accelerator/assets/73684109/ff9199e8-22bb-4196-a0df-16e06933da7b)
+![angle-explanation](https://github.com/dioo1461/Accelerator/assets/73684109/decb2849-a70a-443a-8649-59189cc06e28)
 ▲ 새로 생성되는 타깃은, 이전에 처치된 타깃이 있던 지점(빨간 점)으로부터 Θ값(target_spawn_angle)을 더한 각도 내에 랜덤으로 생성됨. (그림에서 노란색으로 표시된, 반구 표면의 원형 지점 내부에 랜덤 생성)
 target_lifetime, target_size, target_spawn_angle 은 플레이어의 현재 accuracy에 따라 변동됨(난이도 조정).
 
