@@ -1,4 +1,4 @@
-![image](https://github.com/dioo1461/Accelerator/assets/73684109/d8991f1b-67e9-4fa0-98dd-ddcc144eacbc)# Accelerator
+# Accelerator
 유니티 기반 FPS 에임 연습 및 사용자간 대전 프로그램 (미완성)
 
 # 기술 스택
